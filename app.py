@@ -6,8 +6,8 @@ import numpy as np
 app = Flask(__name__)
 
 print("Loading models...")
-model = joblib.load('c:/Users/Josep/Downloads/Fundementals of Financial Technology-20260213T142952Z-1-001/Fundementals of Financial Technology/credit/fraud_mlp_model.joblib')
-scaler = joblib.load('c:/Users/Josep/Downloads/Fundementals of Financial Technology-20260213T142952Z-1-001/Fundementals of Financial Technology/credit/fraud_scaler.joblib')
+model = joblib.load('fraud_mlp_model.joblib')
+scaler = joblib.load('fraud_scaler.joblib')
 print("✅ Models loaded successfully!")
 
 @app.route('/', methods=['GET', 'POST'])
@@ -71,6 +71,6 @@ label{font-size:0.9em;color:#555;font-weight:bold}
     return render_template_string(html, prediction=prediction, probability=probability)
 
 if __name__ == '__main__':
-    print("\n🚀 Starting Flask server on http://localhost:5000")
-    print("Press Ctrl+C to stop\n")
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
+
