@@ -6,8 +6,8 @@ import numpy as np
 app = Flask(__name__)
 
 print("Loading models...")
-model = joblib.load('c:/Users/Josep/Downloads/Fundementals of Financial Technology-20260213T142952Z-1-001/Fundementals of Financial Technology/credit/fraud_mlp_model.joblib')
-scaler = joblib.load('c:/Users/Josep/Downloads/Fundementals of Financial Technology-20260213T142952Z-1-001/Fundementals of Financial Technology/credit/fraud_scaler.joblib')
+model = joblib.load('fraud_mlp_model.joblib')
+scaler = joblib.load('fraud_scaler.joblib')
 print("✅ Models loaded successfully!")
 
 @app.route('/', methods=['GET', 'POST'])
